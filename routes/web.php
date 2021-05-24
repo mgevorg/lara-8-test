@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 | Available methods: get, post, put, patch, delete, options.
-| 
+|
 | Route::match(['get', 'post'], '/', function () {
 | 	//
 | });
@@ -41,14 +43,18 @@ use Illuminate\Support\Facades\Route;
 
 */
 
-Route::get('/', function () {
-    return view('welcome');
+ Route::get('/', function () {
+     return view('welcome');
+ });
+
+Route::get('admin', function(){
+    return "ADMIN RETURN ARA BOZI TXA";
 });
 
-Route::match(['get', 'post'], '/', function () {
-    //
-});
+// Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function () {
+//	Route::get('/', [ItemController::class, 'index'])->name('index');
+//
+//     Route::get('/database', [AdminController::class, 'database'])->name('database');
+// });
 
-Route::any('/', function () {
-    //
-});
+
