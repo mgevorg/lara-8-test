@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-use App\Http\View\ProfileComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class   AppServiceProvider extends ServiceProvider
+class ViewServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -25,6 +24,8 @@ class   AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//
+        View::composer(['index', 'shmindex'], function($view) {
+            $view->with(['key' => 'shitvalue']);
+        });
     }
 }

@@ -35,11 +35,25 @@ use App\Http\Controllers\Admin\AdminController;
 | });
 |
 |
+|--------------------------------------------------------------------------
+| Redirect with parameters
+|--------------------------------------------------------------------------
+|
+| return redirect()->route('profile', ['id' => 1]);
 |
 |
+|--------------------------------------------------------------------------
+| Redirect toController Actions
+|--------------------------------------------------------------------------
+|
+| return redirect()->action([UserController::class, 'index']);
+|
+| ** with parameters **
+|
+| return redirect()->action([UserController::class, 'profile'], ['id' => 1]);
 |
 |
-|
+
 
 */
 
@@ -47,14 +61,12 @@ use App\Http\Controllers\Admin\AdminController;
      return view('welcome');
  });
 
-Route::get('admin', function(){
-    return "ADMIN RETURN ARA BOZI TXA";
-});
 
-// Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function () {
-//	Route::get('/', [ItemController::class, 'index'])->name('index');
-//
-//     Route::get('/database', [AdminController::class, 'database'])->name('database');
-// });
+
+ Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function () {
+	Route::get('/', [AdminController::class, 'index'])->name('index');
+
+     Route::get('/database', [AdminController::class, 'database'])->name('database');
+ });
 
 

@@ -12,9 +12,13 @@ class AdminController extends Controller
     	//
     }
 
-    public function index()
+    public function index(Request $request)
     {
-    	return "shit";
+//    	return $request->ip();
+//        return $request->url();
+//        return $request->path();
+//        dd($request->all());
+        return response()->view('index')->cookie('name', 'value', 1500);
     }
 
     public function database()

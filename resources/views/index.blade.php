@@ -1,0 +1,2 @@
+{{ $key }}
+{{ Cookie::get('name') }}
